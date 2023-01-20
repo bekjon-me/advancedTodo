@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "./axios";
 
 function App() {
+  const handleRegister = () => {
+    let data = {
+      username: "bkefkfak",
+      email: "bkefkfak@gmail.com",
+      password1: "abcdef12345678",
+      password2: "abcdef12345678",
+    };
+    axios
+      .post("auth/registration/", JSON.stringify(data))
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    console.log("clicked");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello World</h1>
+      <button onClick={handleRegister}>REgister</button>
     </div>
   );
 }
