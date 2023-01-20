@@ -113,7 +113,7 @@ Clone this repository to your desired folder:
 
 ### Install and usage
 
-Installing packages and run commands in client and server folders separately
+Installing packages and run commands in the client and server folders separately
 
 <!--
 Example command:
