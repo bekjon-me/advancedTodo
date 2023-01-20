@@ -10,7 +10,7 @@ function App() {
       password2: "abcdef12345678",
     };
     axios
-      .post("auth/registration/", JSON.stringify(data))
+      .post("auth/registration/", data)
       .then((res) => {
         console.log(res.data);
       })
