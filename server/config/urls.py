@@ -24,42 +24,50 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",
-        default_version='v1',
+        default_version="v1",
         description="Test description",
         terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="contact@snippets.local"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
-    permission_classes=[permissions.AllowAny],
+    permission_classes=[permissions.IsAuthenticated],
 )
 
 urlpatterns = [
     # admin path
-    path('admin/', admin.site.urls),
-
+    path("admin/", admin.site.urls),
     # dj-rest-auth login and register path
-    path('api/auth/', include('dj_rest_auth.urls')),
-    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
-
+    path("api/auth/", include("dj_rest_auth.urls")),
+    path("api/auth/registration/", include("dj_rest_auth.registration.urls")),
     # social auth path
-    path('api/auth/', include('social_rest_auth.urls')),
-
+    path("api/auth/", include("social_rest_auth.urls")),
     # swagger path
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$',
-            schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    re_path(r'^swagger/$', schema_view.with_ui(
-        'swagger', cache_timeout=0), name='schema-swagger-ui'),
-    re_path(r'^redoc/$', schema_view.with_ui(
-        'redoc', cache_timeout=0), name='schema-redoc'),
-
+    re_path(
+        r"^swagger(?P<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+    ),
+    re_path(
+        r"^swagger/$",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    re_path(
+        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+    ),
     # api-v1 main project path
-    path('api-v1/', include('config.api_urls')),
+    path("api-v1/", include("config.api_urls")),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
-else:
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    urlpatterns += staticfiles_urlpatterns()
+    from django.views.generic import RedirectView
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns.append(path(
+        "favicon.ico",
+        RedirectView.as_view(url="/static/favicon.ico"),
+    ))
+# else:
+#     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+#     urlpatterns += staticfiles_urlpatterns()
