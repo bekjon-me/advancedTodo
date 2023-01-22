@@ -175,9 +175,7 @@ LOGOUT_URL = "/api/auth/logout/"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.".__add__(
-            "UserAttributeSimilarityValidator",
-        )
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -210,7 +208,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     str(BASE_DIR.joinpath("static")),
 ]
-STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+STATIC_ROOT = BASE_DIR.joinpath("staticfiles")
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
