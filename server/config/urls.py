@@ -64,10 +64,12 @@ if settings.DEBUG:
     from django.views.generic import RedirectView
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns.append(path(
-        "favicon.ico",
-        RedirectView.as_view(url="/static/favicon.ico"),
-    ))
+    urlpatterns.append(
+        path(
+            "favicon.ico",
+            RedirectView.as_view(url="/static/favicon.ico"),
+        )
+    )
 # else:
 #     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #     urlpatterns += staticfiles_urlpatterns()
