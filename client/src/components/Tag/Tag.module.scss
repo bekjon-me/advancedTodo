@@ -1,0 +1,15 @@
+.tag {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  font-family: "Asap", sans-serif;
+  font-size: 10px;
+  color: #69665c;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #0a25c0;
+}
