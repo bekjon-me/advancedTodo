@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
 import Tag from "../../components/Tag/Tag";
+import TaskCard from "../../components/TaskCard/TaskCard";
 
 let staticData: any = [
   {
@@ -63,6 +64,10 @@ export default function Main() {
         {staticData.map((tag: any) => (
           <Tag key={tag.id} name={tag.name} color={tag.color} />
         ))}
+      </div>
+
+      <div className={styles.tasks}>
+        <TaskCard />
       </div>
     </div>
   );

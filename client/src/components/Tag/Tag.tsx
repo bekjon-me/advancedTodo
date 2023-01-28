@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Tag.module.scss";
 
 interface IProps {
-  name: string;
+  name?: string;
   color: string;
 }
 

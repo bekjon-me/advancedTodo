@@ -1,0 +1,94 @@
+.card {
+  background-color: #fff9de;
+  font-family: "Asap", sans-serif;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  border-radius: 8px;
+  position: relative;
+
+  p {
+    font-size: 20px;
+    font-family: "Caveat", cursive;
+  }
+
+  .tags {
+    display: flex;
+    width: 70%;
+    padding-right: 0;
+    margin-right: 0;
+    border: 1px solid red;
+    column-gap: 12px;
+    row-gap: 10px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .edit {
+    display: flex;
+    column-gap: 6px;
+    color: #69665c;
+    font-weight: bold;
+    width: min-content;
+    position: absolute;
+    right: 22px;
+    top: 5px;
+    padding: 8px;
+    cursor: pointer;
+
+    span {
+      padding: 2px;
+      background-color: #69665c;
+      border-radius: 50%;
+    }
+  }
+
+  .editModal {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background-color: #fff;
+    color: #929086;
+    font-family: ubuntu, sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-radius: 12px;
+    animation: modalAnim 0.2s ease-in-out;
+
+    span {
+      margin: 12px 20px;
+    }
+  }
+}
+
+@keyframes modalAnim {
+  0% {
+    width: 0;
+    top: 0;
+    height: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+  50% {
+    width: 17.5%;
+    opacity: 0.5;
+    height: fit-content / 2;
+    top: 15px;
+    right: 11px;
+  }
+
+  100% {
+    top: 30px;
+    opacity: 1;
+    right: 22px;
+    height: fit-content;
+    width: 35%;
+  }
+}
