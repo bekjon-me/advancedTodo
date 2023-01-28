@@ -1,31 +1,9 @@
 import React from "react";
-import axios from "./axios";
+import "./assets/main.scss";
+import AppRouter from "./router/AppRouter";
 
 function App() {
-  const handleRegister = () => {
-    let data = {
-      username: "bkefkfak",
-      email: "bkefkfak@gmail.com",
-      password1: "abcdef12345678",
-      password2: "abcdef12345678",
-    };
-    axios
-      .post("auth/registration/", data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    console.log("clicked");
-  };
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <button onClick={handleRegister}>REgister</button>
-    </div>
-  );
+  return <AppRouter />;
 }
 
 export default App;
