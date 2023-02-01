@@ -21,7 +21,7 @@ class Project(models.Model):
 
     def __str__(self) -> str:
         return str(
-            f"USER:{self.user} UPID:{self.upid} NAME:{self.name} "
+            f"USER:{self.user} UPID:{self.upid} NAME:{self.name}"
             # f"(Date:{self.created.strftime('%m/%d/%Y|%H:%M:%S')})"
         )
 
