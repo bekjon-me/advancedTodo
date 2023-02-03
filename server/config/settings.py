@@ -38,7 +38,7 @@ except:
 DEBUG = env.bool("DEBUG", False)
 
 # Allowed hosts
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", ["localhost", "127.0.0.1:8000"])
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", ["localhost", "127.0.0.1:8000", "0.0.0.0"])
 
 # Site configuration
 SITE_ID = env.int("SITE_ID", 1)
