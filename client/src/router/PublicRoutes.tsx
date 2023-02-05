@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { Main, Profile } from "../pages";
-import { MAIN, PROFILE } from "./utils";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import { MAIN, LOGIN, REGISTER } from "./utils";
 
 export const publicRouter = createBrowserRouter([
   {
@@ -8,8 +10,15 @@ export const publicRouter = createBrowserRouter([
     element: <Main />,
   },
   {
-    path: PROFILE,
-    element: <Profile />,
+    path: LOGIN,
+    element: <Login />,
+  },
+  {
+    path: REGISTER,
+    element: <SignUp />,
+  },
+  {
+    path: "*",
+    element: <Login />,
   },
 ]);
-

@@ -1,5 +1,6 @@
 .main {
   padding-top: 20px;
+  position: relative;
 }
 
 .addBtn {
@@ -19,14 +20,13 @@
   &:hover {
     background-color: #0a25c0;
     opacity: 0.8;
-    scale: 1.1;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
 
   &:active {
     background-color: #0a25c0;
     opacity: 0.8;
-    scale: 1;
+    scale: 1.1;
     transition: all 0.05s ease-in-out;
   }
 }
@@ -37,7 +37,6 @@
   column-gap: 12px;
   row-gap: 10px;
   overflow-x: auto;
-  scrollbar-width: 1px solid red;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;

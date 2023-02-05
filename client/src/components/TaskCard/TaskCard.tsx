@@ -79,6 +79,11 @@ export default function TaskCard() {
         <hr />
         <span>Delete</span>
       </div>
+
+      <div className={styles.checkBox}>
+        <label>done</label>
+        <input type="checkbox" />
+      </div>
     </div>
   );
 }
