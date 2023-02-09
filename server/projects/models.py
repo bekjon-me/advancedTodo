@@ -1,18 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .utils import cal_key
-# Create your models here.
 
 
 class Project(models.Model):
     class Meta:
-        ordering = ['upid']
-        unique_together = ['upid', 'user']
+        ordering = ["upid"]
+        unique_together = ["upid", "user"]
 
     "Model for Projects"
     upid = models.PositiveIntegerField()  # user-project-id
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='projects')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="projects")
 
     name = models.CharField(max_length=50)
 
