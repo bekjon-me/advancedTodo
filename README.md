@@ -68,7 +68,7 @@ This is ad advanced **TODO APP** with a lot of features. You can use it to plan 
 
 - **You can use it to plan your day**
 - **It is easy to use**
-- **There is also comments**
+- **There are also comments**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
