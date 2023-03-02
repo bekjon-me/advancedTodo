@@ -1,11 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
-import AuthReducer from "./AuthSlice";
-import { logger } from "./logger";
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+import AuthReducer from './AuthSlice';
+import { logger } from './logger';
+import TodosReducer from './TodosSlice';
 
 export const store = configureStore({
   reducer: {
     auth: AuthReducer,
+    todos: TodosReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(logger, thunk),

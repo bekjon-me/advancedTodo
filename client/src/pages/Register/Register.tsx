@@ -1,38 +1,35 @@
 import React from 'react';
-import styles from './Login.module.scss';
+import styles from './Register.module.scss';
 import { Field, Form } from 'react-final-form';
 import { BiHide, BiShow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import { nonTokenInstance } from '../../axios/axios';
 import { toast } from 'react-toastify';
-import { MAIN } from '../../router/utils';
 import { useAppDispatch } from '../../app/hooks';
-import { createUser } from '../../app/AuthSlice';
-import { setTodos } from '../../app/TodosSlice';
-import { handleLogin } from '../../service/login';
+import { setIsloading } from '../../app/AuthSlice';
+import { handleRegister } from '../../service/register';
 
 export default function Login() {
   const [passwordShown, setPasswordShown] = React.useState(false);
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: any) => {
-    if (values.username !== values.username.toLowerCase()) {
-      toast.error('Username must be in lowercase');
+    if (values.password1 !== values.password2) {
+      toast.error('Passwords do not match');
       return;
     }
 
-    handleLogin(values, dispatch);
+    handleRegister(values, dispatch);
   };
   return (
     <div className='container'>
-      <Link to={MAIN}>
-        <h2 className={styles.logo}>AdvancedTodo</h2>
-      </Link>
+      <h2 className={styles.logo}>AdvancedTodo</h2>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <h2 className={styles.welcome}>Welcome !</h2>
-            <h2>Log in to</h2>
+            <h2>Register </h2>
             <p className={styles.titleP}>your account</p>
             <div className={styles.email}>
               <label>Username</label>
@@ -43,13 +40,31 @@ export default function Login() {
                 placeholder='Username'
               />
             </div>
+            <div className={styles.email}>
+              <label>Email</label>
+              <Field
+                name='email'
+                component='input'
+                type='email'
+                placeholder='Email'
+              />
+            </div>
             <div className={styles.password}>
               <label>Password</label>
               <Field
-                name='password'
+                name='password1'
                 component='input'
                 type={passwordShown ? 'text' : 'password'}
-                placeholder='Password'
+                placeholder='Repeat password'
+              />
+            </div>
+            <div className={styles.password}>
+              <label>Password</label>
+              <Field
+                name='password2'
+                component='input'
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='Repeat password'
               />
               <span>
                 {passwordShown ? (

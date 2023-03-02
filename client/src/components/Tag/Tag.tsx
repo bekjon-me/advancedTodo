@@ -1,14 +1,19 @@
-import React from "react";
-import styles from "./Tag.module.scss";
+import React from 'react';
+import styles from './Tag.module.scss';
 
 interface IProps {
   name?: string;
   color: string;
+  className: string;
+  onClick?: () => void;
 }
 
 export default function Tag(props: IProps) {
   return (
-    <div className={styles.tag}>
+    <div
+      className={styles.tag + ' ' + styles[props.className]}
+      onClick={props.onClick}
+    >
       <div
         className={styles.circle}
         style={{ backgroundColor: props.color }}

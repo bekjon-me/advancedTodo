@@ -1,18 +1,24 @@
 export type user = {
   isUser: boolean;
   username: string;
-  password: string;
+  isLoading: boolean;
 };
 
-export type subscription = boolean[];
+export type Project = {
+  name: string;
+  color: string;
+};
 
-export type info = {
-  firstName: string;
-  lastName: string;
-  middleName?: string;
-  birthdate?: string;
-  email: string;
-  gender: string;
-  isOlderThan18: boolean;
-  cardNumber?: string;
+export type Todo = {
+  id: number;
+  title: string;
+  description: string;
+  importance: string;
+  status: string;
+};
+
+export type todos = {
+  projects: Project[];
+  todos: Todo[];
+  activeTags: string[];
 };

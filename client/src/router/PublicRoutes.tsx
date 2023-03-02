@@ -1,8 +1,8 @@
-import { createBrowserRouter, RouteObject } from "react-router-dom";
-import { Main, Profile } from "../pages";
-import Login from "../pages/Login/Login";
-import SignUp from "../pages/SignUp/SignUp";
-import { MAIN, LOGIN, REGISTER } from "./utils";
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { Main, Profile } from '../pages';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
+import { MAIN, LOGIN, REGISTER } from './utils';
 
 export const publicRouter = createBrowserRouter([
   {
@@ -15,10 +15,10 @@ export const publicRouter = createBrowserRouter([
   },
   {
     path: REGISTER,
-    element: <SignUp />,
+    element: <Register />,
   },
   {
-    path: "*",
+    path: '*',
     element: <Login />,
   },
 ]);

@@ -1,6 +1,6 @@
 .card {
   background-color: #fff9de;
-  font-family: "Asap", sans-serif;
+  font-family: 'Asap', sans-serif;
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
   p {
     font-size: 20px;
-    font-family: "Caveat", cursive;
+    font-family: 'Caveat', cursive;
   }
 
   .tags {
@@ -37,9 +37,9 @@
     width: min-content;
     position: absolute;
     right: 22px;
-    top: 5px;
     padding: 8px;
     cursor: pointer;
+    top: 10px;
 
     span {
       padding: 2px;
@@ -77,8 +77,9 @@
     position: absolute;
     bottom: 10px;
     right: 25px;
+    -webkit-tap-highlight-color: transparent;
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       width: 20px;
       height: 20px;
       border-radius: 100%;
@@ -92,6 +93,7 @@
 
     label {
       padding: 2px;
+      user-select: none;
     }
   }
 }

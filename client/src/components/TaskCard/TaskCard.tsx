@@ -1,52 +1,12 @@
-import React from "react";
-import Tag from "../Tag/Tag";
-import styles from "./TaskCard.module.scss";
+import React from 'react';
+import { Project, Todo } from '../../app/@types.data';
+import { useTodos } from '../../hooks/useTodos';
+import Tag from '../Tag/Tag';
+import styles from './TaskCard.module.scss';
 
-let staticData: any = [
-  {
-    id: 1,
-    name: "Work",
-    color: "#B2AFA1",
-  },
-  {
-    id: 2,
-    name: "Home",
-    color: "#D1E5F7",
-  },
-  {
-    id: 3,
-    name: "Work",
-    color: "#FFCECE",
-  },
-  {
-    id: 4,
-    name: "Home",
-    color: "#D2CEFF",
-  },
-  {
-    id: 5,
-    name: "Work",
-    color: "#B2AFA1",
-  },
-  {
-    id: 6,
-    name: "Home",
-    color: "#D1E5F7",
-  },
-  {
-    id: 7,
-    name: "Work",
-    color: "#FFCECE",
-  },
-  {
-    id: 8,
-    name: "Home",
-    color: "#D2CEFF",
-  },
-];
-
-export default function TaskCard() {
+export default function TaskCard({ todo }: { todo: Todo }) {
   const [modal, setModal] = React.useState(false);
+  const { projects, activeTags } = useTodos();
 
   const handleModalToggle = () => {
     setModal(!modal);
@@ -54,14 +14,15 @@ export default function TaskCard() {
 
   return (
     <div className={styles.card}>
-      <h2>The title</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam</p>
+      <h2>{todo.title}</h2>
+      <p>{todo.description}</p>
 
       <div className={styles.tags}>
         <div className={styles.tags}>
-          {staticData.map((tag: any) => (
-            <Tag key={tag.id} color={tag.color} />
-          ))}
+          {projects.map((tag: Project) => {
+            if (activeTags.includes(tag.name))
+              return <Tag key={tag.color} color={tag.color} className='' />;
+          })}
         </div>
       </div>
 
@@ -73,7 +34,7 @@ export default function TaskCard() {
 
       <div
         className={styles.editModal}
-        style={{ display: modal ? "flex" : "none" }}
+        style={{ display: modal ? 'flex' : 'none' }}
       >
         <span>Edit...</span>
         <hr />
@@ -82,7 +43,7 @@ export default function TaskCard() {
 
       <div className={styles.checkBox}>
         <label>done</label>
-        <input type="checkbox" />
+        <input type='checkbox' />
       </div>
     </div>
   );

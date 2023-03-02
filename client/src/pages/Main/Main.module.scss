@@ -3,31 +3,52 @@
   position: relative;
 }
 
-.addBtn {
-  background-color: #0a25c0;
-  border: none;
-  color: rgb(255, 255, 255);
-  padding: 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 6px;
-  width: 100%;
+.actions {
+  display: flex;
 
-  &:hover {
+  .addBtn {
     background-color: #0a25c0;
-    opacity: 0.8;
-    transition: all 0.1s ease-in-out;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 50%;
+
+    &:hover {
+      background-color: #0a25c0;
+      opacity: 0.8;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:active {
+      background-color: #0a25c0;
+      opacity: 0.8;
+      scale: 1.02;
+      transition: all 0.05s ease-in-out;
+    }
   }
 
-  &:active {
-    background-color: #0a25c0;
-    opacity: 0.8;
-    scale: 1.1;
-    transition: all 0.05s ease-in-out;
+  .addProjectBtn {
+    background-color: rgba(8, 163, 8, 0.76);
+
+    &:hover {
+      background-color: rgba(8, 163, 8, 0.66);
+      opacity: 0.8;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:active {
+      background-color: rgba(8, 163, 8, 0.86);
+      opacity: 0.8;
+      scale: 1.02;
+      transition: all 0.05s ease-in-out;
+    }
   }
 }
 
@@ -44,5 +65,20 @@
 }
 
 .tasks {
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+.nothing {
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 600;
+  color: #69665c;
+  font-family: 'Asap', sans-serif;
+}
+
+.projectName {
+  font-size: 25px;
+  font-weight: 600;
+  color: #69665c;
+  font-family: 'Asap', sans-serif;
 }

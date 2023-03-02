@@ -2,9 +2,13 @@
   display: flex;
   align-items: center;
   column-gap: 4px;
-  font-family: "Asap", sans-serif;
+  font-family: 'Asap', sans-serif;
   font-size: 10px;
+  padding: 6px;
+  border-radius: 8px;
   color: #69665c;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .circle {
@@ -12,4 +16,8 @@
   height: 20px;
   border-radius: 50%;
   background-color: #0a25c0;
+}
+
+.selected {
+  background-color: #eee;
 }
