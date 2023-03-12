@@ -1,0 +1,92 @@
+.main {
+  padding-top: 20px;
+  position: relative;
+}
+
+.actions {
+  display: flex;
+
+  .addBtn {
+    background-color: #0a25c0;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 50%;
+
+    &:hover {
+      background-color: #0a25c0;
+      opacity: 0.8;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:active {
+      background-color: #0a25c0;
+      opacity: 0.8;
+      scale: 1.02;
+      transition: all 0.05s ease-in-out;
+    }
+  }
+
+  .addProjectBtn {
+    background-color: rgba(8, 163, 8, 0.76);
+
+    &:hover {
+      background-color: rgba(8, 163, 8, 0.66);
+      opacity: 0.8;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:active {
+      background-color: rgba(8, 163, 8, 0.86);
+      opacity: 0.8;
+      scale: 1.02;
+      transition: all 0.05s ease-in-out;
+    }
+  }
+}
+
+.tags {
+  margin: 10px;
+  display: flex;
+  column-gap: 12px;
+  row-gap: 10px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tasks {
+  margin-top: 10px;
+}
+
+.nothing {
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 500;
+  color: #69665c;
+  font-family: 'Asap', sans-serif;
+}
+
+.projectName {
+  font-size: 25px;
+  font-weight: 600;
+  color: #69665c;
+  font-family: 'Asap', sans-serif;
+  margin-top: 20px;
+}
+
+.loader {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

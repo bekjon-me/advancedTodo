@@ -1,0 +1,139 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  .modal__content {
+    width: 90%;
+    min-height: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    form {
+      border: none;
+      box-shadow: none;
+      width: 100%;
+      justify-content: flex-start;
+      padding: 0;
+
+      .formAction {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        p {
+          font-family: 'Asap', sans-serif;
+          user-select: none;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+          background-color: #69665c;
+          border: none;
+          cursor: pointer;
+          font-weight: 600;
+          color: #fff;
+          padding: 5px 20px;
+          border-radius: 5px;
+          width: fit-content;
+          margin: 0;
+        }
+      }
+
+      .input {
+        font-family: 'Asap', sans-serif;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          .selected {
+            background-color: #eee;
+            padding: 6px;
+            border-radius: 8px;
+          }
+
+          h2 {
+            color: #69665c;
+            font-size: 16px;
+          }
+        }
+
+        label {
+          font-family: 'Asap', sans-serif;
+          color: #69665c;
+          font-weight: bold;
+        }
+
+        input {
+          font-family: 'Asap', sans-serif;
+          padding: 6px;
+          border: none;
+          background-color: #f0f0f0;
+          border-radius: 4px;
+          font-weight: 700;
+          color: #69665c;
+
+          &::placeholder {
+            font-family: 'Asap', sans-serif;
+            color: #69665c;
+            font-weight: normal;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        textarea {
+          font-family: 'Asap', sans-serif;
+          padding: 6px;
+          resize: none;
+          border: none;
+          background-color: #f0f0f0;
+          border-radius: 4px;
+          font-weight: 700;
+          color: #69665c;
+          min-height: 90px;
+
+          &::placeholder {
+            font-family: 'Asap', sans-serif;
+            color: #69665c;
+            font-weight: normal;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .color {
+        input {
+          height: 50px;
+        }
+      }
+    }
+  }
+}

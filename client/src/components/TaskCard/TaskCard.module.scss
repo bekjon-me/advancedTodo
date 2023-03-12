@@ -1,0 +1,125 @@
+.card {
+  background-color: #fff9de;
+  font-family: 'Asap', sans-serif;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  border-radius: 8px;
+  position: relative;
+  min-height: 200px;
+
+  p {
+    font-size: 20px;
+    font-family: 'Caveat', cursive;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    padding-right: 0;
+    margin-right: 0;
+    column-gap: 12px;
+    row-gap: 10px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .edit {
+    display: flex;
+    column-gap: 6px;
+    color: #69665c;
+    font-weight: bold;
+    width: min-content;
+    position: absolute;
+    right: 22px;
+    padding: 8px;
+    cursor: pointer;
+    top: 10px;
+
+    span {
+      padding: 2px;
+      background-color: #69665c;
+      border-radius: 50%;
+    }
+  }
+
+  .editModal {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background-color: #fff;
+    color: #929086;
+    font-family: ubuntu, sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-radius: 12px;
+    animation: modalAnim 0.2s ease-in-out;
+
+    span {
+      margin: 12px 20px;
+    }
+  }
+
+  .checkBox {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #69665c;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    -webkit-tap-highlight-color: transparent;
+
+    input[type='checkbox'] {
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      cursor: pointer;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    label {
+      padding: 2px;
+      user-select: none;
+    }
+  }
+}
+
+@keyframes modalAnim {
+  0% {
+    width: 0;
+    top: 0;
+    height: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+  50% {
+    width: 17.5%;
+    opacity: 0.5;
+    height: fit-content / 2;
+    top: 15px;
+    right: 11px;
+  }
+
+  100% {
+    top: 30px;
+    opacity: 1;
+    right: 22px;
+    height: fit-content;
+    width: 35%;
+  }
+}

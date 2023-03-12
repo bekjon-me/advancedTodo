@@ -1,0 +1,202 @@
+a {
+  text-decoration: none;
+}
+
+h2.logo {
+  font-family: 'Asap', sans-serif;
+  color: #69665c;
+  margin-bottom: 55px;
+  margin-top: 13px;
+}
+
+form {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 1px solid #00000046;
+  padding: 16px;
+
+  .signUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 200;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    a {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #ffffff;
+    background: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .google {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      color: #000000;
+    }
+
+    svg {
+      font-size: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  h2.welcome {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    color: #000000;
+  }
+
+  p.titleP {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+    margin-bottom: 30px;
+  }
+
+  .email {
+    margin-bottom: 30px;
+  }
+
+  .email,
+  .password {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: relative;
+
+    span {
+      position: absolute;
+      right: 7px;
+      top: 60%;
+
+      svg {
+        cursor: pointer;
+        font-size: 20px;
+      }
+    }
+
+    label {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      color: #000000;
+    }
+
+    input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #00000046;
+      border-radius: 5px;
+      padding: 0 10px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      color: #000000;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: #0000005b;
+      }
+    }
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+    .rememberMe {
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 5px;
+      }
+
+      label {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        color: #000000;
+      }
+    }
+
+    .forgotPassword {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 200;
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+
+      a {
+        color: #000000;
+      }
+    }
+  }
+}
