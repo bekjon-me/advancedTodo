@@ -1,39 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Field, Form } from 'react-final-form';
-import Tag from '../Tag/Tag';
 import styles from './Modal.module.scss';
 import { toast, ToastContainer } from 'react-toastify';
-
-let staticData: any = [
-  {
-    id: 1,
-    name: 'Work',
-    color: '#B2AFA1',
-  },
-  {
-    id: 2,
-    name: 'Home',
-    color: '#D1E5F7',
-  },
-  {
-    id: 3,
-    name: 'Study',
-    color: '#FFCECE',
-  },
-  {
-    id: 4,
-    name: 'University',
-    color: '#D2CEFF',
-  },
-];
+import { withTokenInstance } from '../../axios/axios';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addProject, selectTodos } from '../../app/TodosSlice';
+import { Project } from '../../app/@types.data';
 
 interface IProps {
   setModal: (modal: null | string) => void;
 }
 
 export default function AddProjectModal(props: IProps) {
-  const onSubmit = (values: any) => {
-    console.log(values);
+  const dispatch = useAppDispatch();
+  const { projects } = useAppSelector(selectTodos);
+
+  const onSubmit = async (values: any) => {
+    const name = values.name.trim();
+    if (
+      projects.find(
+        (project) => project.name.toLowerCase().trim() === name.toLowerCase()
+      )
+    ) {
+      toast.error('Project already exists');
+      return;
+    }
+    try {
+      const res = await withTokenInstance.post('api-v1/projects/', values);
+      toast.success(res.data.name + ' has been added successfully');
+      const project: Project = {
+        upid: res.data.upid,
+        name: res.data.name,
+      };
+      dispatch(addProject(project));
+    } catch (error) {
+      toast.error("Couldn't add the project");
+    }
+    props.setModal(null);
   };
 
   const handleToggleModal = () => {
@@ -57,20 +60,12 @@ export default function AddProjectModal(props: IProps) {
               <div className={styles.input}>
                 <label>Title</label>
                 <Field
-                  name='title'
+                  ref={(input: HTMLInputElement) => input && input.focus()}
+                  name='name'
                   component='input'
                   type='text'
                   placeholder='add a title ...'
                   required
-                />
-              </div>
-              <div className={styles.input + ' ' + styles.color}>
-                <label>Color</label>
-                <Field
-                  defaultValue='#000000'
-                  name='color'
-                  component='input'
-                  type='color'
                 />
               </div>
             </form>

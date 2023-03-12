@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { withTokenInstance, nonTokenInstance } from '../axios/axios';
 import { createUser, setIsloading } from '../app/AuthSlice';
 import { Dispatch } from '@reduxjs/toolkit';
+import { setProjects } from '../app/TodosSlice';
 
 export const handleLogin = (values: any, dispatch: Dispatch) => {
   const data = {
@@ -22,7 +23,7 @@ export const handleLogin = (values: any, dispatch: Dispatch) => {
       withTokenInstance
         .get('api-v1/projects/')
         .then((res) => {
-          data.projects = res.data;
+          dispatch(setProjects(res.data));
         })
         .catch((err) => {
           console.log(err);

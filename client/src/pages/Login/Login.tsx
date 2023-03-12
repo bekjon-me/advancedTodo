@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './Login.module.scss';
 import { Field, Form } from 'react-final-form';
 import { BiHide, BiShow } from 'react-icons/bi';
+import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MAIN } from '../../router/utils';
 import { useAppDispatch } from '../../app/hooks';
-import { createUser } from '../../app/AuthSlice';
-import { setTodos } from '../../app/TodosSlice';
 import { handleLogin } from '../../service/login';
+import { withTokenInstance } from '../../axios/axios';
 
 export default function Login() {
   const [passwordShown, setPasswordShown] = React.useState(false);
@@ -21,6 +21,17 @@ export default function Login() {
     }
 
     handleLogin(values, dispatch);
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const res = await withTokenInstance.get(
+        'api/auth/google/login/?redirect_uri={callback_url}'
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className='container'>
@@ -70,6 +81,11 @@ export default function Login() {
             </div>
 
             <button type='submit'>Submit</button>
+
+            <div className={styles.google}>
+              <h2>Login with Google</h2>
+              <FcGoogle onClick={handleGoogleLogin} />
+            </div>
 
             <div className={styles.signUp}>
               <p>Don't have an account?</p>

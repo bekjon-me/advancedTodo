@@ -51,8 +51,27 @@ form {
     border-radius: 5px;
     padding: 10px 0;
     cursor: pointer;
-    margin-bottom: 30px;
     width: 100%;
+  }
+
+  .google {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      color: #000000;
+    }
+
+    svg {
+      font-size: 40px;
+      margin-right: 10px;
+    }
   }
 
   h2.welcome {

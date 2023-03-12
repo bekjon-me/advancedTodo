@@ -3,50 +3,46 @@ import { Field, Form } from 'react-final-form';
 import Tag from '../Tag/Tag';
 import styles from './Modal.module.scss';
 import { toast, ToastContainer } from 'react-toastify';
-
-let staticData: any = [
-  {
-    id: 1,
-    name: 'Work',
-    color: '#B2AFA1',
-  },
-  {
-    id: 2,
-    name: 'Home',
-    color: '#D1E5F7',
-  },
-  {
-    id: 3,
-    name: 'Study',
-    color: '#FFCECE',
-  },
-  {
-    id: 4,
-    name: 'University',
-    color: '#D2CEFF',
-  },
-];
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectTodos } from '../../app/TodosSlice';
+import { Project } from '../../app/@types.data';
+import { withTokenInstance } from '../../axios/axios';
 
 interface IProps {
   setModal: (modal: null | string) => void;
 }
 
 export default function Modal(props: IProps) {
-  const [activeTags, setActiveTags] = useState<string[]>([]);
-  const onSubmit = (values: any) => {
-    if (activeTags.length === 0) {
-      toast.warning('Please select at least one tag');
-      // return;
+  const [selectedTag, setSelectedtags] = useState<{ name: string; id: number }>(
+    { name: '', id: 0 }
+  );
+  const { projects } = useAppSelector(selectTodos);
+  const dispatch = useAppDispatch();
+
+  const onSubmit = async (values: any) => {
+    if (selectedTag.name === '') {
+      toast.warning('Please select one of the projects');
+      return;
     }
 
-    console.log(values, activeTags);
+    try {
+      const res = await withTokenInstance.post(
+        `api-v1/projects/${selectedTag.id}/tasks/`
+      );
+      toast.success(res.data.name + ' has been added successfully');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleAddTag = (tagName: string) => {
-    if (activeTags.includes(tagName)) {
-      setActiveTags(activeTags.filter((tag) => tag !== tagName));
+  const handleAddTag = async (name: string, id: number) => {
+    if (selectedTag.name === name) {
+      setSelectedtags({ name: '', id: 0 });
     } else {
-      setActiveTags([...activeTags, tagName]);
+      setSelectedtags({
+        name,
+        id,
+      });
     }
   };
 
@@ -87,17 +83,21 @@ export default function Modal(props: IProps) {
                 />
               </div>
               <div className={styles.input}>
-                <label>Tags</label>
+                <label>
+                  Which project would you like to add to this todo? (you must
+                  select one project)
+                </label>
                 <div className={styles.tags}>
-                  {staticData.map((tag: any) => (
+                  {projects.map((project: Project) => (
                     <Tag
-                      key={tag.id}
-                      name={tag.name}
-                      color={tag.color}
+                      key={project.upid}
+                      name={project.name}
                       className={
-                        activeTags.includes(tag.name) ? 'selected' : ''
+                        selectedTag.name.includes(project.name)
+                          ? 'selected'
+                          : ''
                       }
-                      onClick={() => handleAddTag(tag.name)}
+                      onClick={() => handleAddTag(project.name, project.upid)}
                     />
                   ))}
                 </div>

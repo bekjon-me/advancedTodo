@@ -7,21 +7,37 @@ import TaskCard from '../../components/TaskCard/TaskCard';
 import Modal from '../../components/Modal/Modal';
 import AddProjectModal from '../../components/Modal/AddProjectModal';
 import { useTodos } from '../../hooks/useTodos';
+import { withTokenInstance } from '../../axios/axios';
+import { Project } from '../../app/@types.data';
+import { useAppDispatch } from '../../app/hooks';
+import { setActiveTag, setTodos } from '../../app/TodosSlice';
+import Loader from '../../components/Loader/Loader';
 
 export default function Main() {
   const [modal, setModal] = React.useState<null | string>(null);
-  const [selectedTags, setSelectedtags] = React.useState<string[]>([]);
-  const { projects, activeTags, todos } = useTodos();
+  const [selectedTag, setSelectedtag] = React.useState<string>('');
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const { projects, activeTag, todos } = useTodos();
+  const dispatch = useAppDispatch();
 
   const handleAdd = (type: string) => {
     setModal(type);
   };
 
-  const handleFilter = (tag: string) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedtags(selectedTags.filter((t) => t !== tag));
+  const handleFilter = async (name: string, id: number) => {
+    if (selectedTag === name) {
+      setSelectedtag('');
     } else {
-      setSelectedtags([...selectedTags, tag]);
+      setSelectedtag(name);
+      setLoading(true);
+      try {
+        const res = await withTokenInstance.get(`api-v1/projects/${id}/tasks/`);
+        dispatch(setTodos(res.data));
+        dispatch(setActiveTag(name));
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
     }
   };
 
@@ -44,28 +60,31 @@ export default function Main() {
         {projects.length === 0 ? (
           <p className={styles.nothing}>You haven't got any project yet</p>
         ) : (
-          projects.map((tag: any) => (
+          projects.map((project: Project) => (
             <Tag
-              key={tag.id}
-              name={tag.name}
-              color={tag.color}
-              className={selectedTags.includes(tag.name) ? 'selected' : ''}
-              onClick={() => handleFilter(tag.name)}
+              key={project.upid}
+              name={project.name}
+              className={selectedTag.includes(project.name) ? 'selected' : ''}
+              onClick={() => handleFilter(project.name, project.upid)}
             />
           ))
         )}
       </div>
 
-      <h2 className={styles.projectName}>
-        {activeTags.length === 0
-          ? 'All'
-          : projects.map((project) => <p key={project.name}>{project.name}</p>)}
-      </h2>
+      <h2 className={styles.projectName}>{activeTag}</h2>
 
       <div className={styles.tasks}>
-        {todos.map((todo) => (
-          <TaskCard todo={todo} />
-        ))}
+        {loading ? (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        ) : todos.length === 0 ? (
+          <p className={styles.nothing}>
+            You haven't got any todo yet in this project
+          </p>
+        ) : (
+          todos.map((todo) => <TaskCard key={todo.ptid} todo={todo} />)
+        )}
       </div>
 
       {modal ? (

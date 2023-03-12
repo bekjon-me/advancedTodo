@@ -1,27 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from 'react-redux-typescript';
-import { todos } from './@types.data';
+import { Todo, todos, Project } from './@types.data';
 import { RootState } from './store';
 
 // init state
 const initialState = {
-  projects: [
-    {
-      name: 'All',
-      color: '#000000',
-    },
-  ],
-  todos: [
-    {
-      id: 1,
-      title: 'First Todo',
-      description:
-        'This is the first todo, it is very important, and it is in development, so it is very important',
-      importance: 'Moderately important',
-      status: 'Development',
-    },
-  ],
-  activeTags: ['All'],
+  projects: [],
+  todos: [],
+  activeTag: '',
 } as todos;
 
 const TodosSlice = createSlice({
@@ -32,17 +18,26 @@ const TodosSlice = createSlice({
   // an object of "case reducers"
   // key names are used to generate actions
   reducers: {
-    setTodos: (state: todos, action: PayloadAction<string, todos>) => {
-      state.projects = action.payload.projects;
-      state.todos = action.payload.todos;
+    addTodo: (state: todos, action: PayloadAction<string, Todo>) => {
+      state.todos.push(action.payload);
     },
-    addActiveTag: (state: todos, action: PayloadAction<string, string>) => {
-      state.activeTags.push(action.payload);
+    addProject: (state: todos, action: PayloadAction<string, Project>) => {
+      state.projects.push(action.payload);
+    },
+    setActiveTag: (state: todos, action: PayloadAction<string, string>) => {
+      state.activeTag = action.payload;
+    },
+    setProjects: (state: todos, action: PayloadAction<string, Project[]>) => {
+      state.projects = action.payload;
+    },
+    setTodos: (state: todos, action: PayloadAction<string, Todo[]>) => {
+      state.todos = action.payload;
     },
   },
 });
 
-export const { setTodos, addActiveTag } = TodosSlice.actions;
+export const { addProject, addTodo, setActiveTag, setProjects, setTodos } =
+  TodosSlice.actions;
 export default TodosSlice.reducer;
 
 // create and export the selector

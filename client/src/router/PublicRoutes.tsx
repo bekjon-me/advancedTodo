@@ -6,10 +6,6 @@ import { MAIN, LOGIN, REGISTER } from './utils';
 
 export const publicRouter = createBrowserRouter([
   {
-    path: MAIN,
-    element: <Main />,
-  },
-  {
     path: LOGIN,
     element: <Login />,
   },

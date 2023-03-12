@@ -6,7 +6,7 @@ import styles from './TaskCard.module.scss';
 
 export default function TaskCard({ todo }: { todo: Todo }) {
   const [modal, setModal] = React.useState(false);
-  const { projects, activeTags } = useTodos();
+  const { projects, activeTag } = useTodos();
 
   const handleModalToggle = () => {
     setModal(!modal);
@@ -16,15 +16,6 @@ export default function TaskCard({ todo }: { todo: Todo }) {
     <div className={styles.card}>
       <h2>{todo.title}</h2>
       <p>{todo.description}</p>
-
-      <div className={styles.tags}>
-        <div className={styles.tags}>
-          {projects.map((tag: Project) => {
-            if (activeTags.includes(tag.name))
-              return <Tag key={tag.color} color={tag.color} className='' />;
-          })}
-        </div>
-      </div>
 
       <div className={styles.edit} onClick={handleModalToggle}>
         <span></span>

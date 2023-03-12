@@ -71,7 +71,7 @@
 .nothing {
   margin: 0 auto;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   color: #69665c;
   font-family: 'Asap', sans-serif;
 }
@@ -81,4 +81,12 @@
   font-weight: 600;
   color: #69665c;
   font-family: 'Asap', sans-serif;
+  margin-top: 20px;
+}
+
+.loader {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

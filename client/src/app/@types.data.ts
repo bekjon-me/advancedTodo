@@ -5,20 +5,26 @@ export type user = {
 };
 
 export type Project = {
+  upid: number;
   name: string;
-  color: string;
 };
 
 export type Todo = {
-  id: number;
-  title: string;
+  ptid: number;
+  beginning: string;
+  completion: string;
+  created: string;
+  current_status: string;
   description: string;
   importance: string;
-  status: string;
+  attached_files: [];
+  subtasks: [];
+  title: string;
+  updated: string;
 };
 
 export type todos = {
   projects: Project[];
   todos: Todo[];
-  activeTags: string[];
+  activeTag: string;
 };

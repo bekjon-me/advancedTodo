@@ -9,15 +9,14 @@
   color: #69665c;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-}
-
-.circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #0a25c0;
+  background-color: #eee;
+  user-select: none;
 }
 
 .selected {
-  background-color: #eee;
+  background-color: #000;
+
+  h2 {
+    color: #fff;
+  }
 }
